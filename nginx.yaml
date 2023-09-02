@@ -1,0 +1,12 @@
+- name: install nginx and start the service
+  hosts: mongodb
+  become: yes #it will run as a root user
+  tasks:
+  - name: install nginx
+    ansible.builtin.yum: 
+      name: nginx
+      state: installed
+  - name: start nginx as service
+    ansible.builtin.service:
+      name: nginx
+      state: started
